@@ -187,7 +187,7 @@ def calculate_R(R_count: int, purchases) -> int:
         existing_qs = purchases["Q"]
     else:
         existing_qs = 0
-    free_qs = R_count // 2
+    free_qs = R_count // 3
 
     if free_qs != 0:
         discounts_applied = 0
@@ -219,6 +219,7 @@ def calculate_V(V_count: int) -> int:
     subtotal += prices["2V"] * twos
     subtotal += prices["V"] * ones
     return subtotal
+
 
 
 
