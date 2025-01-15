@@ -69,5 +69,3 @@ def calculate_E(number_of_E, purchases):
     subtotal += purchases["B"] *  prices["B"]
     subtotal -= discounts * prices["2B"]
     return subtotal
-
-
