@@ -85,4 +85,3 @@ class TestCheckout:
         items = "ABCDEABCDE"
         price = checkout_solution.checkout(items)
         assert price == 280
-

@@ -9,7 +9,8 @@ prices = {
     "B": 30,
     "C": 20,
     "D": 15,
-    "E": 40
+    "E": 40,
+    "F": 10
 }
 
 def checkout(skus: str) -> int:
@@ -19,7 +20,8 @@ def checkout(skus: str) -> int:
         "B": 0,
         "C": 0,
         "D": 0,
-        "E": 0
+        "E": 0,
+        "F": 10
     }
 
     total = 0
@@ -37,6 +39,8 @@ def checkout(skus: str) -> int:
             total += calculate_B(number_bought)
         elif key == "E":
             total += calculate_E(number_bought, purchases)
+        elif key == "F":
+            total += calculate_F(number_bought)
         else:
             total += purchases[key] * prices[key]
     return total
@@ -81,9 +85,10 @@ def calculate_E(number_of_E, purchases):
             free_bs -= 1
     return subtotal
 
-
-
-
-
-
-
+def calculate_F(number_of_F):
+    subtotal = 0
+    discounts = number_of_F // 3
+    subtotal += discounts * (2 * prices["F"])
+    remaining = number_of_F % 3
+    subtotal += remaining * prices["F"]
+    return subtotal
