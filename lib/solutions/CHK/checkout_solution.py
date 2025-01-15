@@ -157,7 +157,7 @@ def calculate_K(K_count: int) -> int:
 
 def calculate_N(N_count: int, purchases: dict) -> int:
     subtotal = 0
-    subtotal += N_count * prices["E"]
+    subtotal += N_count * prices["N"]
 
     if "M" in purchases:
         existing_ms = purchases["M"]
