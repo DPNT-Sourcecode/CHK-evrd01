@@ -17,8 +17,8 @@ prices = {
     "10H": 80,
     "I": 35,
     "J": 60,
-    "K": 80,
-    "2K": 150,
+    "K": 70,
+    "2K": 120,
     "L": 90,
     "M": 15,
     "N": 40,
@@ -37,7 +37,8 @@ prices = {
     "W": 20,
     "X": 90,
     "Y": 10,
-    "Z": 50
+    "Z": 50,
+    "STXYZx3": 45
 }
 
 def checkout(skus: str) -> int:
@@ -227,3 +228,4 @@ def calculate_V(V_count: int) -> int:
     subtotal += prices["2V"] * twos
     subtotal += prices["V"] * ones
     return subtotal
+
