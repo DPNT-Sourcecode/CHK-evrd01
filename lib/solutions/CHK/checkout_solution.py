@@ -58,6 +58,7 @@ def checkout(skus: str) -> int:
     return total
 
 def calculate_total(sku: int, count: int, purchases: dict) -> int:
+        group_not_yet_handled = True
         match sku:
             case "A":
                 return calculate_A(count)
@@ -84,7 +85,11 @@ def calculate_total(sku: int, count: int, purchases: dict) -> int:
             case "V":
                 return calculate_V(count)
             case ("S" | "T" | "X" | "Y" | "Z"):
-                return calculate_group(purchases)
+                print(group_not_yet_handled)
+                if group_not_yet_handled:
+                    group_not_yet_handled = False
+                    print(group_not_yet_handled)
+                    return calculate_group(purchases)
             case _:
                 return purchases[sku] * prices[sku]
 
@@ -281,5 +286,6 @@ def calculate_group(purchases: dict) -> int:
                 remaining -= 1
 
     return subtotal
+
 
 
