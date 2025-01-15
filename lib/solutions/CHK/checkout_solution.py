@@ -16,9 +16,23 @@ def checkout(skus):
         "D": 0
     }
 
+    total = 0
+
     for char in skus:
         if char not in prices:
             raise Exception("Invalid SKU")
         
+        purchases[char] += 1
+        
+        if purchases["A"] % 3 == 0:
+            total += 30
+            continue
 
+        if purchases["B"] % 2 == 0:
+            total += 15
+            continue
+
+        total += prices[char]
+    
+    return total
 
