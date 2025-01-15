@@ -50,24 +50,11 @@ def checkout(skus: str) -> int:
         for key, value in dict.items():
             subtotal = 0
             if key == "A":
-                calculate_A(value)
-                fives = value // 5
-                threes = (value % 5) // 3
-                ones = (value % 5) % 3
-                subtotal += prices["5A"] * fives
-                subtotal += prices["3A"] * threes
-                subtotal += prices["A"] * ones
-                total += subtotal
+                total += calculate_A(value)
             if key == "B":
-                twos = value // 2
-                ones = value % 2
-                subtotal += prices["2B"] * twos
-                subtotal += prices["B"] * ones
-                total += subtotal
+                total += calculate_B(value)
             if key == "E":
-                twos = value // 2
-                purchases["B"] += twos
-
+                total += calculate_E(value)
         # total += prices[char]
     
     return total
@@ -80,4 +67,19 @@ def calculate_A(value):
     subtotal += prices["5A"] * fives
     subtotal += prices["3A"] * threes
     subtotal += prices["A"] * ones
+    return subtotal
+
+def calculate_B(value):
+    subtotal = 0
+    twos = value // 2
+    ones = value % 2
+    subtotal += prices["2B"] * twos
+    subtotal += prices["B"] * ones
+    return subtotal
+
+def calculate_E(value):
+    subtotal = 0
+    twos = value // 2
+    already_purchased_b = purchases["B"]
+    purchases["B"] += twos
     return subtotal
