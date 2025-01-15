@@ -71,7 +71,7 @@ def calculate_total(sku: int, count: int, purchases: dict) -> int:
             case "K":
                 return calculate_K(count)
             case "N":
-                return calculate_N(count)
+                return calculate_N(count, purchases)
             case "P":
                 return calculate_P(count)
             case "Q":
@@ -155,12 +155,20 @@ def calculate_K(K_count: int) -> int:
     subtotal += prices["K"] * ones
     return subtotal
 
-def calculate_N(N_count: int) -> int:
+def calculate_N(N_count: int, purchases: dict) -> int:
     subtotal = 0
     subtotal += N_count * prices["E"]
 
+    if "M" in purchases:
+        existing_ms = purchases["M"]
+    else:
+        existing_ms = 0
+
     free_ms = N_count // 3
-    subtotal -= free_ms * prices["M"]
+    while existing_ms and free_ms: 
+        subtotal -= free_ms * prices["M"]
+        existing_ms -= 1
+        free_ms -= 1
     return subtotal
 
 def calculate_P(P_count: int) -> int:
@@ -219,10 +227,3 @@ def calculate_V(V_count: int) -> int:
     subtotal += prices["2V"] * twos
     subtotal += prices["V"] * ones
     return subtotal
-
-
-
-
-
-
-
