@@ -53,18 +53,20 @@ def checkout(skus: str) -> int:
         else:
             purchases[char] = 1
 
-    for key, number_bought in purchases.items():
-        if key == "A":
-            total += calculate_A(number_bought)
-        elif key == "B":
-            total += calculate_B(number_bought)
-        elif key == "E":
-            total += calculate_E(number_bought, purchases)
-        elif key == "F":
-            total += calculate_F(number_bought)
+    for sku, count in purchases.items():
+        if sku == "A":
+            total += calculate_A(count)
+        elif sku == "B":
+            total += calculate_B(count)
+        elif sku == "E":
+            total += calculate_E(count, purchases)
+        elif sku == "F":
+            total += calculate_F(count)
         else:
-            total += purchases[key] * prices[key]
+            total += purchases[sku] * prices[sku]
     return total
+
+def calcualte_total(sku: int, count: int, purchases: dict) -> int
 
 def calculate_A(number_of_A):
     subtotal = 0
@@ -117,5 +119,6 @@ def calculate_F(number_of_F: int) -> int:
     remaining = number_of_F % 3
     subtotal += remaining * prices["F"]
     return subtotal
+
 
 
