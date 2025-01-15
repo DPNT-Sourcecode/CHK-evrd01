@@ -5,7 +5,7 @@ prices = {
     "5A": 200,
     "3A": 130,
     "A": 50,
-    "2B": 15,
+    "2B": 45,
     "B": 30,
     "C": 20,
     "D": 15,
@@ -69,7 +69,7 @@ def calculate_E(number_of_E, purchases):
     discounts = 0
     if twos > 0:
         discounts = twos + (already_purchased_b % 2)
-    subtotal -= (prices["2B"] - prices["B"]) * discounts
+        subtotal -= (prices["B"] - prices["2B"]) * discounts
     return subtotal
 
 
