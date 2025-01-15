@@ -54,7 +54,7 @@ def checkout(skus: str) -> int:
             if key == "B":
                 total += calculate_B(value)
             if key == "E":
-                total += calculate_E(value)
+                total += calculate_E(value, purchases)
         # total += prices[char]
     
     return total
@@ -77,7 +77,7 @@ def calculate_B(value):
     subtotal += prices["B"] * ones
     return subtotal
 
-def calculate_E(value):
+def calculate_E(value, purchases):
     subtotal = 0
     twos = value // 2
     already_purchased_b = purchases["B"]
