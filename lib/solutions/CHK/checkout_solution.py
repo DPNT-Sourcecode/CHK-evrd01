@@ -51,12 +51,14 @@ def calculate_A(number_of_A):
     subtotal += prices["A"] * ones
     return subtotal
 
-def calculate_B(number_of_B, purchases):
+def calculate_B(number_of_B):
     subtotal = 0
     twos = number_of_B // 2
     ones = number_of_B % 2
     subtotal += prices["2B"] * twos
     subtotal += prices["B"] * ones
+    print("B")
+    print(subtotal)
     return subtotal
 
 def calculate_E(number_of_E, purchases):
@@ -79,4 +81,5 @@ def calculate_E(number_of_E, purchases):
     print("###### subtotal")
     print(subtotal)
     return subtotal
+
 
