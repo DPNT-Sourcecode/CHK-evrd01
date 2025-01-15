@@ -236,15 +236,26 @@ def calculate_group(purchases: dict) -> int:
 
     if "S" in purchases:
         initial_s = purchases["S"]
+    else:
+        initial_s = 0
     if "T" in purchases:
         initial_t = purchases["T"]
+    else:
+        initial_t = 0
     if "X" in purchases:
         initial_x = purchases["X"]
+    else:
+        initial_x = 0
     if "Y" in purchases:
         initial_y = purchases["Y"]
+    else:
+        initial_y = 0
     if "Z" in purchases:
         initial_z = purchases["Z"]
+    else:
+        initial_z = 0
     total_purchases_from_group = initial_s + initial_t + initial_x + initial_y + initial_z
+    print(total_purchases_from_group)
 
     if total_purchases_from_group < 3:
         subtotal += initial_s * prices["S"]
@@ -252,6 +263,7 @@ def calculate_group(purchases: dict) -> int:
         subtotal += initial_x * prices["X"]
         subtotal += initial_y * prices["Y"]
         subtotal += initial_z * prices["Z"]
+        print("no group discount")
         return subtotal
     else:
         purchase_groups = total_purchases_from_group // 3
@@ -263,8 +275,10 @@ def calculate_group(purchases: dict) -> int:
             if initial_x >= purchase_groups + 2:
                 subtotal += prices["X"]
                 initial_x -= 1
+                remaining -= 1
             else:
                 subtotal += prices["S"]
+                remaining -= 1
 
     return subtotal
 
