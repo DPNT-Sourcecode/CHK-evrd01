@@ -265,9 +265,13 @@ def calculate_group(purchases: dict) -> int:
         subtotal += initial_z * prices["Z"]
         return subtotal
     else:
+        print(f"{subtotal} before")
         purchase_groups = total_purchases_from_group // 3
+        print(f"{purchase_groups=}")
         subtotal += purchase_groups * prices["STXYZx3"]
         remaining = purchase_groups % 3
+        print(f"{remaining=}")
+        print(f"{subtotal} no remainder")
         # X is cheapest, prioritise buying this stand alone
         # Don't like how I hardcoded this, should have really sorted the prices and used that
         while remaining > 0:
@@ -278,5 +282,6 @@ def calculate_group(purchases: dict) -> int:
             else:
                 subtotal += prices["S"]
                 remaining -= 1
+        print(f"{subtotal} remainder addede")
 
     return subtotal
