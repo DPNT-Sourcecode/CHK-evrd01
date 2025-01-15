@@ -159,10 +159,20 @@ def calculate_N(N_count: int) -> int:
     pass
 
 def calculate_P(P_count: int) -> int:
-    pass
+    subtotal = 0
+    fives = P_count // 5
+    ones = P_count % 5
+    subtotal += prices["5P"] * fives
+    subtotal += prices["P"] * ones
+    return subtotal
 
 def calculate_Q(Q_count: int) -> int:
-    pass
+    subtotal = 0
+    threes = Q_count // 3
+    ones = Q_count % 3
+    subtotal += prices["3Q"] * threes
+    subtotal += prices["Q"] * ones
+    return subtotal
 
 def calculate_R(R_count: int) -> int:
     pass
@@ -172,3 +182,4 @@ def calculate_U(U_count: int) -> int:
 
 def calculate_V(V_count: int) -> int:
     pass
+
