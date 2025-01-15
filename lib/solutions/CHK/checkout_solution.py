@@ -202,7 +202,7 @@ def calculate_R(R_count: int, purchases) -> int:
         while existing_qs > 0 and free_qs > 0:
             discounts_applied += 1
             if discounts_applied % 3 == 0 or (existing_qs - free_qs) % 3 != 0:
-                subtotal -= prices["3Q"] - prices["Q"]
+                subtotal -= prices["3Q"] - (2 *prices["Q"])
             elif discounts_applied % 3 != 0:
                 subtotal -= prices["Q"]
             existing_qs -= 1
@@ -227,3 +227,4 @@ def calculate_V(V_count: int) -> int:
     subtotal += prices["2V"] * twos
     subtotal += prices["V"] * ones
     return subtotal
+
