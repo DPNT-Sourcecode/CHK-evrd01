@@ -31,6 +31,11 @@ class TestCheckout:
         price = checkout_solution.checkout(items)
         assert price == 40
 
+    def test_checkout_F(self):
+        items = "F"
+        price = checkout_solution.checkout(items)
+        assert price == 10
+
     def test_checkout_all(self):
         items = "ABCD"
         price = checkout_solution.checkout(items)
@@ -85,3 +90,9 @@ class TestCheckout:
         items = "ABCDEABCDE"
         price = checkout_solution.checkout(items)
         assert price == 280
+
+    def test_checkout_6F(self):
+        items = "FFFFFF"
+        price = checkout_solution.checkout(items)
+        assert price == 40
+
