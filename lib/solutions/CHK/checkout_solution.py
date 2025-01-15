@@ -227,6 +227,3 @@ def calculate_V(V_count: int) -> int:
     subtotal += prices["2V"] * twos
     subtotal += prices["V"] * ones
     return subtotal
-
-
-
