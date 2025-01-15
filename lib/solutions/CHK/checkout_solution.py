@@ -79,7 +79,10 @@ def calculate_E(number_of_E, purchases):
                 subtotal -= prices["2B"] - prices["B"]
             existing_bs -= 1
             free_bs -= 1
+        print("E")
+        print(subtotal)
     return subtotal
+
 
 
 
