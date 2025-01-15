@@ -175,3 +175,8 @@ class TestCheckout:
         items = "SXYSXY"
         price = checkout_solution.checkout(items)
         assert price == 90
+
+    def test_checkout_group_purchase_long(self):
+        items = "ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        price = checkout_solution.checkout(items)
+        assert price == 1602

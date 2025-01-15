@@ -271,7 +271,7 @@ def calculate_group(purchases: dict) -> int:
         # X is cheapest, prioritise buying this stand alone
         # Don't like how I hardcoded this, should have really sorted the prices and used that
         while remaining > 0:
-            if initial_x >= purchase_groups + 2:
+            if initial_x >= purchase_groups:
                 subtotal += prices["X"]
                 initial_x -= 1
                 remaining -= 1
