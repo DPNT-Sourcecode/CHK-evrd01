@@ -1,17 +1,18 @@
 # noinspection PyUnusedLocal
 # skus = unicode string
 
+prices = {
+    "5A": 200,
+    "3A": 130,
+    "A": 50,
+    "2B": 15,
+    "B": 30,
+    "C": 20,
+    "D": 15,
+    "E": 40
+}
+
 def checkout(skus: str) -> int:
-    prices = {
-        "5A": 200,
-        "3A": 130,
-        "A": 50,
-        "2B": 15,
-        "B": 30,
-        "C": 20,
-        "D": 15,
-        "E": 40
-    }
 
     purchases = {
         "A": 0,
@@ -49,6 +50,7 @@ def checkout(skus: str) -> int:
         for key, value in dict.items():
             subtotal = 0
             if key == "A":
+                calculate_A(value)
                 fives = value // 5
                 threes = (value % 5) // 3
                 ones = (value % 5) % 3
@@ -61,11 +63,21 @@ def checkout(skus: str) -> int:
                 ones = value % 2
                 subtotal += prices["2B"] * twos
                 subtotal += prices["B"] * ones
+                total += subtotal
+            if key == "E":
+                twos = value // 2
+                purchases["B"] += twos
 
         # total += prices[char]
     
     return total
 
-
-
-
+def calculate_A(value):
+    subtotal = 0
+    fives = value // 5
+    threes = (value % 5) // 3
+    ones = (value % 5) % 3
+    subtotal += prices["5A"] * fives
+    subtotal += prices["3A"] * threes
+    subtotal += prices["A"] * ones
+    return subtotal
