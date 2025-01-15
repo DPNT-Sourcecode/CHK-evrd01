@@ -22,7 +22,8 @@ def checkout(skus: str) -> int:
 
     for char in skus:
         if char not in prices:
-            raise Exception("Invalid SKU")
+            return -1
+            # raise Exception("Invalid SKU")
         
         purchases[char] += 1
         
@@ -37,6 +38,7 @@ def checkout(skus: str) -> int:
         total += prices[char]
     
     return total
+
 
 
 

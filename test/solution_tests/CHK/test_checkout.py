@@ -1,6 +1,11 @@
 from solutions.CHK import checkout_solution
 
 class TestCheckout:
+    def test_checkout_illegal(self):
+        items = "---"
+        price = checkout_solution.checkout(items)
+        assert price == -1
+
     def test_checkout_A(self):
         items = "A"
         price = checkout_solution.checkout(items)
@@ -40,3 +45,4 @@ class TestCheckout:
         items = "ABCDABABAA"
         price = checkout_solution.checkout(items)
         assert price == 340
+
