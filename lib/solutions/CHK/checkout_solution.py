@@ -47,14 +47,17 @@ def checkout(skus: str) -> int:
             # if purchases["B"] %2 == 0:
                 # total -= 15
 
-        for key, value in dict.items():
+        for key, value in purchases.items():
             subtotal = 0
             if key == "A":
                 total += calculate_A(value)
-            if key == "B":
+            elif key == "B":
                 total += calculate_B(value)
-            if key == "E":
+            elif key == "E":
                 total += calculate_E(value, purchases)
+            else:
+                total += purchases[key] * prices[key]
+            
         # total += prices[char]
     
     return total
@@ -79,7 +82,11 @@ def calculate_B(value):
 
 def calculate_E(value, purchases):
     subtotal = 0
+    subtotal += value * prices["E"]
+
     twos = value // 2
     already_purchased_b = purchases["B"]
     purchases["B"] += twos
+    discounts = twos + (already_purchased_b % 2)
+    subtotal -= (prices["2B"] - prices["B"]) * discounts
     return subtotal
