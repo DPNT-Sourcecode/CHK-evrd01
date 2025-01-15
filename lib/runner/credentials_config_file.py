@@ -8,6 +8,8 @@ def read_from_config_file(key):
 
 def read_from_config_file_with_default(key, default_value):
     properties = read_properties_file()
+
+
     return properties.get(key, default_value)
 
 
@@ -41,3 +43,4 @@ def load_properties(filepath, sep='=', comment_char='#'):
     except IOError as e:
         print('ERROR: You need to download the credentials.config file before you can run this.')
         exit(1)
+
