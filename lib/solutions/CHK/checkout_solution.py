@@ -158,27 +158,9 @@ def calculate_K(K_count: int) -> int:
 def calculate_N(N_count: int, purchases: dict) -> int:
     subtotal = 0
     subtotal += N_count * prices["E"]
-    
-    if "M" in purchases:
-        existing_ms = purchases["M"]
-    else:
-        existing_ms = 0
-    free_ms = N_count // 3
 
-    if free_ms != 0:
-        # I don't think I agree with the numbers the software wants for EEB - 2Es makes 80 and you get a free B.
-        # You buy a 2nd, discounted B at 15 which makes 95, not 80
-        # subtotal += prices["2B"] - (2 * prices["B"])
-        # I misunderstood the input - I assumed the new free Bs were not included in the input which added lots of confusion
-        discounts_applied = 0
-        while existing_ms > 0 and free_ms > 0:
-            discounts_applied += 1
-            if discounts_applied %2 == 0 or (existing_ms - free_ms) % 2 != 0:
-                subtotal -= prices["2B"] - prices["B"]
-            elif discounts_applied % 2 != 0:
-                subtotal -= prices["B"]
-            existing_ms -= 1
-            free_ms -= 1
+    free_ms = N_count // 3
+    subtotal -= free_ms * prices["M"]
     return subtotal
 
 def calculate_P(P_count: int) -> int:
@@ -201,7 +183,12 @@ def calculate_R(R_count: int) -> int:
     pass
 
 def calculate_U(U_count: int) -> int:
-    pass
+    subtotal = 0
+    discounts = U_count // 3
+    subtotal += discounts * (2 * prices["U"])
+    remaining = U_count % 3
+    subtotal += remaining * prices["U"]
+    return subtotal
 
 def calculate_V(V_count: int) -> int:
     subtotal = 0
@@ -212,5 +199,6 @@ def calculate_V(V_count: int) -> int:
     subtotal += prices["2V"] * twos
     subtotal += prices["V"] * ones
     return subtotal
+
 
 
