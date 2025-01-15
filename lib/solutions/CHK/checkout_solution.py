@@ -234,11 +234,16 @@ def calculate_V(V_count: int) -> int:
 def calculate_group(purchases: dict) -> int:
     subtotal = 0
 
-    initial_s = purchases["S"]
-    initial_t = purchases["T"]
-    initial_x = purchases["X"]
-    initial_y = purchases["Y"]
-    initial_z = purchases["Z"]
+    if "S" in purchases:
+        initial_s = purchases["S"]
+    if "T" in purchases:
+        initial_t = purchases["T"]
+    if "X" in purchases:
+        initial_x = purchases["X"]
+    if "Y" in purchases:
+        initial_y = purchases["Y"]
+    if "Z" in purchases:
+        initial_z = purchases["Z"]
     total_purchases_from_group = initial_s + initial_t + initial_x + initial_y + initial_z
 
     if total_purchases_from_group < 3:
@@ -262,4 +267,5 @@ def calculate_group(purchases: dict) -> int:
                 subtotal += prices["S"]
 
     return subtotal
+
 
