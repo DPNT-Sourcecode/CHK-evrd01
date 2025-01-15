@@ -2,6 +2,8 @@
 # skus = unicode string
 
 def checkout(skus: str) -> int:
+    skus = skus.upper()
+
     prices = {
         "A": 50,
         "B": 30,
@@ -35,5 +37,6 @@ def checkout(skus: str) -> int:
         total += prices[char]
     
     return total
+
 
 
