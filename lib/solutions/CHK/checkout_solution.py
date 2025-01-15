@@ -66,36 +66,52 @@ def calculate_total(sku: int, count: int, purchases: dict) -> int:
                 return calculate_E(count, purchases)
             case "F":
                 return calculate_F(count)
+            case "H":
+                pass
+            case "K":
+                pass
+            case "N":
+                pass
+            case "P":
+                pass
+            case "Q":
+                pass
+            case "R":
+                pass
+            case "U":
+                pass
+            case "V":
+                pass
             case _:
                 return purchases[sku] * prices[sku]
 
-def calculate_A(number_of_A):
+def calculate_A(A_count):
     subtotal = 0
-    fives = number_of_A // 5
-    threes = (number_of_A % 5) // 3
-    ones = (number_of_A % 5) % 3
+    fives = A_count // 5
+    threes = (A_count % 5) // 3
+    ones = (A_count % 5) % 3
     subtotal += prices["5A"] * fives
     subtotal += prices["3A"] * threes
     subtotal += prices["A"] * ones
     return subtotal
 
-def calculate_B(number_of_B):
+def calculate_B(B_count):
     subtotal = 0
-    twos = number_of_B // 2
-    ones = number_of_B % 2
+    twos = B_count // 2
+    ones = B_count % 2
     subtotal += prices["2B"] * twos
     subtotal += prices["B"] * ones
     return subtotal
 
-def calculate_E(number_of_E, purchases):
+def calculate_E(E_count, purchases):
     subtotal = 0
-    subtotal += number_of_E * prices["E"]
+    subtotal += E_count * prices["E"]
     
     if "B" in purchases:
         existing_bs = purchases["B"]
     else:
         existing_bs = 0
-    free_bs = number_of_E // 2
+    free_bs = E_count // 2
 
     if free_bs != 0:
         # I don't think I agree with the numbers the software wants for EEB - 2Es makes 80 and you get a free B.
@@ -113,13 +129,38 @@ def calculate_E(number_of_E, purchases):
             free_bs -= 1
     return subtotal
 
-def calculate_F(number_of_F: int) -> int:
+def calculate_F(F_count: int) -> int:
     subtotal = 0
-    discounts = number_of_F // 3
+    discounts = F_count // 3
     subtotal += discounts * (2 * prices["F"])
-    remaining = number_of_F % 3
+    remaining = F_count % 3
     subtotal += remaining * prices["F"]
     return subtotal
+
+def calculate_H(H_count: int) -> int:
+    pass
+
+def calculate_K(K_count: int) -> int:
+    pass
+
+def calculate_N(N_count: int) -> int:
+    pass
+
+def calculate_P(P_count: int) -> int:
+    pass
+
+def calculate_Q(Q_count: int) -> int:
+    pass
+
+def calculate_R(R_count: int) -> int:
+    pass
+
+def calculate_U(U_count: int) -> int:
+    pass
+
+def calculate_V(V_count: int) -> int:
+    pass
+
 
 
 
