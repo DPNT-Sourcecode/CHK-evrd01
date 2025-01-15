@@ -2,8 +2,6 @@
 # skus = unicode string
 
 def checkout(skus: str) -> int:
-    skus = skus.upper()
-
     prices = {
         "A": 50,
         "B": 30,
@@ -27,18 +25,14 @@ def checkout(skus: str) -> int:
         
         purchases[char] += 1
         
-        if purchases["A"] % 3 == 0 and purchases["A"] != 0:
+        if char == "A" and purchases["A"] % 3 == 0 and purchases["A"] != 0:
             total += 30
             continue
 
-        if purchases["B"] % 2 == 0 and purchases["B"] != 0:
+        if char == "B" and purchases["B"] % 2 == 0 and purchases["B"] != 0:
             total += 15
             continue
 
         total += prices[char]
     
     return total
-
-
-
-
