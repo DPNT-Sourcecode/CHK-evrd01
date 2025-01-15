@@ -20,3 +20,23 @@ class TestCheckout:
         items = "D"
         price = checkout_solution.checkout(items)
         assert price == 15
+
+    def test_checkout_all(self):
+        items = "ABCD"
+        price = checkout_solution.checkout(items)
+        assert price == 115
+
+    def test_checkout_A_discount(self):
+        items = "ABCD"
+        price = checkout_solution.checkout(items)
+        assert price == 115
+
+    def test_checkout_B_discount(self):
+        items = "ABCD"
+        price = checkout_solution.checkout(items)
+        assert price == 115
+
+    def test_checkout_AB_discount(self):
+        items = "ABCD"
+        price = checkout_solution.checkout(items)
+        assert price == 115

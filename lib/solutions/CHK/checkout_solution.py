@@ -5,7 +5,7 @@ def checkout(skus):
     prices = {
         "A": 50,
         "B": 30,
-        "C": 25,
+        "C": 20,
         "D": 15
     }
 
@@ -24,13 +24,13 @@ def checkout(skus):
         
         purchases[char] += 1
         
-        # if purchases["A"] % 3 == 0 and purchases["A"] != 0:
-            # total += 30
-            # continue
+        if purchases["A"] % 3 == 0 and purchases["A"] != 0:
+            total += 30
+            continue
 
-        # if purchases["B"] % 2 == 0 and purchases["A"] != 0:
-            # total += 15
-            # continue
+        if purchases["B"] % 2 == 0 and purchases["B"] != 0:
+            total += 15
+            continue
 
         total += prices[char]
     
