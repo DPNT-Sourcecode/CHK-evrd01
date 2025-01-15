@@ -83,6 +83,8 @@ def calculate_total(sku: int, count: int, purchases: dict) -> int:
                 return calculate_U(count)
             case "V":
                 return calculate_V(count)
+            case ("S" | "T" | "X" | "Y" | "Z"):
+                return calculate_group(purchases)
             case _:
                 return purchases[sku] * prices[sku]
 
@@ -228,4 +230,7 @@ def calculate_V(V_count: int) -> int:
     subtotal += prices["2V"] * twos
     subtotal += prices["V"] * ones
     return subtotal
+
+def calculate_group(purchases: dict) -> int:
+    total_purchases_from_group = purchases["S"] + purchases["Y"] + purchases["X"] + purchases["Y"] + purchases["Z"]
 
