@@ -165,14 +165,10 @@ def calculate_N(N_count: int, purchases: dict) -> int:
         existing_ms = 0
 
     free_ms = N_count // 3
-    print(free_ms)
-    print(existing_ms)
-    print(subtotal)
     while existing_ms > 0 and free_ms > 0: 
         subtotal -= prices["M"]
         existing_ms -= 1
         free_ms -= 1
-        print(subtotal)
     return subtotal
 
 def calculate_P(P_count: int) -> int:
@@ -231,5 +227,6 @@ def calculate_V(V_count: int) -> int:
     subtotal += prices["2V"] * twos
     subtotal += prices["V"] * ones
     return subtotal
+
 
 
