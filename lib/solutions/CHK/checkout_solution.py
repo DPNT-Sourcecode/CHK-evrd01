@@ -69,19 +69,19 @@ def calculate_total(sku: int, count: int, purchases: dict) -> int:
             case "H":
                 return calculate_H(count)
             case "K":
-                pass
+                return calculate_K(count)
             case "N":
-                pass
+                return calculate_N(count)
             case "P":
-                pass
+                return calculate_P(count)
             case "Q":
-                pass
+                return calculate_Q(count)
             case "R":
-                pass
+                return calculate_R(count)
             case "U":
-                pass
+                return calculate_U(count)
             case "V":
-                pass
+                return calculate_V(count)
             case _:
                 return purchases[sku] * prices[sku]
 
@@ -138,18 +138,22 @@ def calculate_F(F_count: int) -> int:
     return subtotal
 
 def calculate_H(H_count: int) -> int:
-    # subtotal = 0
-    # tens = H_count // 10
-    # fives = (H_count % 10) // 5
-    # ones = (H_count % 10) % 5
-    # subtotal += prices["10H"] * tens
-    # subtotal += prices["5H"] * fives
-    # subtotal += prices["H"] * ones
-    return 1
-    
+    subtotal = 0
+    tens = H_count // 10
+    fives = (H_count % 10) // 5
+    ones = (H_count % 10) % 5
+    subtotal += prices["10H"] * tens
+    subtotal += prices["5H"] * fives
+    subtotal += prices["H"] * ones
+    return subtotal
 
 def calculate_K(K_count: int) -> int:
-    pass
+    subtotal = 0
+    twos = K_count // 2
+    ones = K_count % 2
+    subtotal += prices["2K"] * twos
+    subtotal += prices["K"] * ones
+    return subtotal
 
 def calculate_N(N_count: int) -> int:
     pass
@@ -168,12 +172,3 @@ def calculate_U(U_count: int) -> int:
 
 def calculate_V(V_count: int) -> int:
     pass
-
-
-
-
-
-
-
-
-
