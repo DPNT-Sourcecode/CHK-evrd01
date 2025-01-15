@@ -47,48 +47,27 @@ def checkout(skus: str) -> int:
     for char in skus:
         if char not in prices:
             return -1
-            # raise Exception("Invalid SKU")
         if char in purchases:
             purchases[char] += 1
         else:
             purchases[char] = 1
 
     for sku, count in purchases.items():
-        if sku == "A":
-            total += calculate_A(count)
-        elif sku == "B":
-            total += calculate_B(count)
-        elif sku == "E":
-            total += calculate_E(count, purchases)
-        elif sku == "F":
-            total += calculate_F(count)
-        else:
-            total += purchases[sku] * prices[sku]
+        total += calculate_total(sku, count, purchases)
     return total
 
-def calcualte_total(sku: int, count: int, purchases: dict) -> int:
+def calculate_total(sku: int, count: int, purchases: dict) -> int:
         match sku:
             case "A":
                 return calculate_A(count)
             case "B":
                 return calculate_B(count)
             case "E":
-                return calculate_B(count)
+                return calculate_E(count, purchases)
             case "F":
-                return calculate_B(count)
+                return calculate_F(count)
             case _:
                 return purchases[sku] * prices[sku]
-
-        # if sku == "A":
-            # total += calculate_A(count)
-        # elif sku == "B":
-            # total += calculate_B(count)
-        # elif sku == "E":
-            # total += calculate_E(count, purchases)
-        # elif sku == "F":
-            # total += calculate_F(count)
-        # else:
-            # total += purchases[sku] * prices[sku]
 
 def calculate_A(number_of_A):
     subtotal = 0
@@ -141,6 +120,7 @@ def calculate_F(number_of_F: int) -> int:
     remaining = number_of_F % 3
     subtotal += remaining * prices["F"]
     return subtotal
+
 
 
 
