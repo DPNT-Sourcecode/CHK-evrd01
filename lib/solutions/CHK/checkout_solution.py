@@ -114,10 +114,10 @@ def calculate_E(E_count, purchases):
     free_bs = E_count // 2
 
     if free_bs != 0:
-        # I don't think I agree with the numbers the software wants for EEB - 2Es makes 80 and you get a free B.
-        # You buy a 2nd, discounted B at 15 which makes 95, not 80
+        # I misunderstood - I thought that with the numbers the software wants for EEB - 2Es makes 80 and you get a free B.
+        # You buy a 2nd, discounted B at 15 which makes 95, not 80. I was using the below line.
         # subtotal += prices["2B"] - (2 * prices["B"])
-        # I misunderstood the input - I assumed the new free Bs were not included in the input which added lots of confusion
+        # I initially assumed the new free Bs were not included in the input which added lots of confusion
         discounts_applied = 0
         while existing_bs > 0 and free_bs > 0:
             discounts_applied += 1
