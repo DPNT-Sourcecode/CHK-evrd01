@@ -38,6 +38,11 @@ def checkout(skus: str) -> int:
             total += 15
             continue
 
+        if char == "E" and purchases["E"] % 2 == 0 and purchases["E"] != 0:
+            purchases["B"] += 1
+            if purchases["B"] %2 == 0:
+                total -= 15
+
         total += prices[char]
     
     return total
