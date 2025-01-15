@@ -279,4 +279,7 @@ def calculate_group(purchases: dict) -> int:
                 subtotal += prices["S"]
                 remaining -= 1
 
+    print(subtotal)
+
     return subtotal
+
