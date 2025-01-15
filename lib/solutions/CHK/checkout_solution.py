@@ -69,7 +69,7 @@ def calculate_E(number_of_E, purchases):
     discounts = 0
     if twos > 0:
         discounts = twos + (already_purchased_b % 2)
-        subtotal -= (prices["B"] - prices["2B"]) * discounts
+        subtotal += (prices["B"] - prices["2B"]) * discounts
     return subtotal
 
 
