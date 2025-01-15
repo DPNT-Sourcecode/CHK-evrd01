@@ -56,7 +56,6 @@ def checkout(skus: str) -> int:
     total += calculate_group(purchases)
     
     for sku, count in purchases.items():
-        print(f"{total=}")
         total += calculate_total(sku, count, purchases)
     return total
 
@@ -86,6 +85,8 @@ def calculate_total(sku: int, count: int, purchases: dict) -> int:
                 return calculate_U(count)
             case "V":
                 return calculate_V(count)
+            case ("S" | "T" | "X" | "Y" | "Z"):
+                return 0
             case _:
                 return purchases[sku] * prices[sku]
 
@@ -211,7 +212,6 @@ def calculate_R(R_count: int, purchases) -> int:
                 subtotal -= prices["Q"]
             existing_qs -= 1
             free_qs -= 1
-    print(subtotal)
     return subtotal
 
 def calculate_U(U_count: int) -> int:
@@ -265,13 +265,9 @@ def calculate_group(purchases: dict) -> int:
         subtotal += initial_z * prices["Z"]
         return subtotal
     else:
-        print(f"{subtotal} before")
         purchase_groups = total_purchases_from_group // 3
-        print(f"{purchase_groups=}")
         subtotal += purchase_groups * prices["STXYZx3"]
-        remaining = purchase_groups % 3
-        print(f"{remaining=}")
-        print(f"{subtotal} no remainder")
+        remaining = total_purchases_from_group % 3
         # X is cheapest, prioritise buying this stand alone
         # Don't like how I hardcoded this, should have really sorted the prices and used that
         while remaining > 0:
@@ -282,6 +278,5 @@ def calculate_group(purchases: dict) -> int:
             else:
                 subtotal += prices["S"]
                 remaining -= 1
-        print(f"{subtotal} remainder addede")
 
     return subtotal
