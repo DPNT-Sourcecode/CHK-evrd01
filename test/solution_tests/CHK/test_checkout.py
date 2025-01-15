@@ -59,12 +59,12 @@ class TestCheckout:
     def test_checkout_2E_B_discount_1(self):
         items = "BEE"
         price = checkout_solution.checkout(items)
-        assert price == 95
+        assert price == 80
 
     def test_checkout_2E_B_discount_2(self):
         items = "EEB"
         price = checkout_solution.checkout(items)
-        assert price == 95
+        assert price == 80
 
     def test_checkout_2E(self):
         items = "EE"
@@ -74,4 +74,4 @@ class TestCheckout:
     def test_checkout_EEEB(self):
         items = "EEEB"
         price = checkout_solution.checkout(items)
-        assert price == 135
+        assert price == 120
