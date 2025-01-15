@@ -30,7 +30,7 @@ def checkout(skus: str) -> int:
             # raise Exception("Invalid SKU")
         purchases[char] += 1
 
-    for key, number_bought in purchases():
+    for key, number_bought in purchases.items():
         if key == "A":
             total += calculate_A(number_bought)
         elif key == "B":
@@ -51,7 +51,7 @@ def calculate_A(number_of_A):
     subtotal += prices["A"] * ones
     return subtotal
 
-def calculate_B(number_of_B):
+def calculate_B(number_of_B, purchases):
     subtotal = 0
     twos = number_of_B // 2
     ones = number_of_B % 2
@@ -63,6 +63,7 @@ def calculate_E(number_of_E, purchases):
     subtotal = 0
     subtotal += number_of_E * prices["E"]
 
+    existing_bs = purchases["B"]
     free_bs = number_of_E // 2
     if free_bs != 0 and (free_bs + purchases["B"]) % 2 == 0:
         # I don't think I agree with the numbers the software wants for EEB - 2Es makes 80 and you get a free B.
@@ -70,8 +71,12 @@ def calculate_E(number_of_E, purchases):
         # I misunderstood the input - I assumed the new free Bs were not included in the input which added lots of confusion
         # subtotal += prices["2B"] - (2 * prices["B"])
         # subtotal -= free_bs * prices["B"]
-        while purchases["B"] > 0 and free_bs > 0:
+        while existing_bs > 0 and free_bs > 0:
+            print(purchases["B"])
             subtotal -= 30
-            purchases["B"] -= 1
+            existing_bs -= 1
             free_bs -= 1
+    print("###### subtotal")
+    print(subtotal)
     return subtotal
+
