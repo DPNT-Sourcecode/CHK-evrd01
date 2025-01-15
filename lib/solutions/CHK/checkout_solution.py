@@ -64,6 +64,9 @@ def calculate_B(number_of_B):
 def calculate_E(number_of_E, purchases):
     subtotal = 0
     subtotal += number_of_E * prices["E"]
+    
+    print("juste")
+    print(subtotal)
 
     existing_bs = purchases["B"]
     free_bs = number_of_E // 2
@@ -86,6 +89,7 @@ def calculate_E(number_of_E, purchases):
         print("E")
         print(subtotal)
     return subtotal
+
 
 
 
