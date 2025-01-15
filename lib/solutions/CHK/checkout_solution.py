@@ -204,9 +204,9 @@ def calculate_R(R_count: int, purchases) -> int:
 
 def calculate_U(U_count: int) -> int:
     subtotal = 0
-    discounts = U_count // 3
-    subtotal += discounts * (2 * prices["U"])
-    remaining = U_count % 3
+    discounts = U_count // 4
+    subtotal += discounts * (3 * prices["U"])
+    remaining = U_count % 4
     subtotal += remaining * prices["U"]
     return subtotal
 
@@ -219,6 +219,7 @@ def calculate_V(V_count: int) -> int:
     subtotal += prices["2V"] * twos
     subtotal += prices["V"] * ones
     return subtotal
+
 
 
 
