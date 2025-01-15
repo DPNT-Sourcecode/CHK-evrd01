@@ -27,16 +27,16 @@ class TestCheckout:
         assert price == 115
 
     def test_checkout_A_discount(self):
-        items = "ABCD"
+        items = "AAAAA"
         price = checkout_solution.checkout(items)
-        assert price == 115
+        assert price == 230
 
     def test_checkout_B_discount(self):
-        items = "ABCD"
+        items = "BBB"
         price = checkout_solution.checkout(items)
-        assert price == 115
+        assert price == 75
 
     def test_checkout_AB_discount(self):
-        items = "ABCD"
+        items = "ABCDABABAA"
         price = checkout_solution.checkout(items)
-        assert price == 115
+        assert price == 340
