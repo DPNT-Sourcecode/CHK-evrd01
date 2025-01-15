@@ -2,15 +2,35 @@
 # skus = unicode string
 
 prices = {
-    "5A": 200,
-    "3A": 130,
     "A": 50,
-    "2B": 45,
+    "3A": 130,
+    "5A": 200,
     "B": 30,
+    "2B": 45,
     "C": 20,
     "D": 15,
     "E": 40,
-    "F": 10
+    "F": 10,
+    "G": 10,
+    "H": 10,
+    "I": 10,
+    "J": 10,
+    "K": 10,
+    "L": 10,
+    "M": 10,
+    "N": 10,
+    "O": 10,
+    "P": 10,
+    "Q": 10,
+    "R": 10,
+    "S": 10,
+    "T": 10,
+    "U": 10,
+    "V": 10,
+    "W": 10,
+    "X": 10,
+    "Y": 10,
+    "Z": 10
 }
 
 def checkout(skus: str) -> int:
@@ -61,8 +81,12 @@ def calculate_E(number_of_E, purchases):
     subtotal = 0
     subtotal += number_of_E * prices["E"]
     
-    existing_bs = purchases["B"]
+    if "B" in purchases:
+        existing_bs = purchases["B"]
+    else:
+        existing_bs = 0
     free_bs = number_of_E // 2
+
     if free_bs != 0:
         # I don't think I agree with the numbers the software wants for EEB - 2Es makes 80 and you get a free B.
         # You buy a 2nd, discounted B at 15 which makes 95, not 80
@@ -86,3 +110,4 @@ def calculate_F(number_of_F: int) -> int:
     remaining = number_of_F % 3
     subtotal += remaining * prices["F"]
     return subtotal
+
