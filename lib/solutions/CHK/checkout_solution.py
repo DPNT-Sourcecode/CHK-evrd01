@@ -71,13 +71,13 @@ def calculate_total(sku: int, count: int, purchases: dict) -> int:
             case "K":
                 return calculate_K(count)
             case "N":
-                return calculate_N(count, purchases)
+                return calculate_N(count)
             case "P":
                 return calculate_P(count)
             case "Q":
                 return calculate_Q(count)
             case "R":
-                return calculate_R(count)
+                return calculate_R(count, purchases)
             case "U":
                 return calculate_U(count)
             case "V":
@@ -155,7 +155,7 @@ def calculate_K(K_count: int) -> int:
     subtotal += prices["K"] * ones
     return subtotal
 
-def calculate_N(N_count: int, purchases: dict) -> int:
+def calculate_N(N_count: int) -> int:
     subtotal = 0
     subtotal += N_count * prices["E"]
 
@@ -179,8 +179,27 @@ def calculate_Q(Q_count: int) -> int:
     subtotal += prices["Q"] * ones
     return subtotal
 
-def calculate_R(R_count: int) -> int:
-    pass
+def calculate_R(R_count: int, purchases) -> int:
+    subtotal = 0
+    subtotal += R_count * prices["R"]
+    
+    if "Q" in purchases:
+        existing_qs = purchases["Q"]
+    else:
+        existing_qs = 0
+    free_qs = R_count // 2
+
+    if free_qs != 0:
+        discounts_applied = 0
+        while existing_qs > 0 and free_qs > 0:
+            discounts_applied += 1
+            if discounts_applied % 3 == 0 or (existing_qs - free_qs) % 3 != 0:
+                subtotal -= prices["3Q"] - prices["Q"]
+            elif discounts_applied % 3 != 0:
+                subtotal -= prices["Q"]
+            existing_qs -= 1
+            free_qs -= 1
+    return subtotal
 
 def calculate_U(U_count: int) -> int:
     subtotal = 0
@@ -199,6 +218,7 @@ def calculate_V(V_count: int) -> int:
     subtotal += prices["2V"] * twos
     subtotal += prices["V"] * ones
     return subtotal
+
 
 
 
