@@ -138,7 +138,15 @@ def calculate_F(F_count: int) -> int:
     return subtotal
 
 def calculate_H(H_count: int) -> int:
-    pass
+    subtotal = 0
+    tens = H_count // 10
+    fives = (H_count % 10) // 5
+    ones = (H_count % 10) % 5
+    subtotal += prices["10H"] * tens
+    subtotal += prices["5H"] * fives
+    subtotal += prices["H"] * ones
+    return subtotal
+    
 
 def calculate_K(K_count: int) -> int:
     pass
@@ -160,6 +168,7 @@ def calculate_U(U_count: int) -> int:
 
 def calculate_V(V_count: int) -> int:
     pass
+
 
 
 
