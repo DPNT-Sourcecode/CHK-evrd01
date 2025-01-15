@@ -63,7 +63,6 @@ def calculate_E(number_of_E, purchases):
     subtotal = 0
     subtotal += number_of_E * prices["E"]
 
-    existing_bs = [""]
     free_bs = number_of_E // 2
     if free_bs != 0 and (free_bs + purchases["B"]) % 2 == 0:
         # I don't think I agree with the numbers the software wants for EEB - 2Es makes 80 and you get a free B.
@@ -76,3 +75,4 @@ def calculate_E(number_of_E, purchases):
             purchases["B"] -= 1
             free_bs -= 1
     return subtotal
+
