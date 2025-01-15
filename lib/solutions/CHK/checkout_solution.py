@@ -247,6 +247,11 @@ def calculate_group(purchases: dict) -> int:
         subtotal += initial_x * prices["X"]
         subtotal += initial_y * prices["Y"]
         subtotal += initial_z * prices["Z"]
+        return subtotal
+    else:
+        purchase_groups = total_purchases_from_group // 3
+        subtotal += purchase_groups * prices["STXYZx3"]
+        remaining = purchase_groups % 3
 
     return subtotal
 
