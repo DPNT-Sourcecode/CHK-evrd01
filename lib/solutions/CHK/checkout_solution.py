@@ -30,7 +30,7 @@ def checkout(skus: str) -> int:
             # raise Exception("Invalid SKU")
         purchases[char] += 1
 
-    for key, number_bought in purchases.items():
+    for key, number_bought in purchases():
         if key == "A":
             total += calculate_A(number_bought)
         elif key == "B":
@@ -75,4 +75,3 @@ def calculate_E(number_of_E, purchases):
             purchases["B"] -= 1
             free_bs -= 1
     return subtotal
-
