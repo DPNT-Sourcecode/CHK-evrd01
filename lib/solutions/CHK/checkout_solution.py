@@ -57,17 +57,12 @@ def calculate_B(number_of_B):
     ones = number_of_B % 2
     subtotal += prices["2B"] * twos
     subtotal += prices["B"] * ones
-    print("B")
-    print(subtotal)
     return subtotal
 
 def calculate_E(number_of_E, purchases):
     subtotal = 0
     subtotal += number_of_E * prices["E"]
     
-    print("juste")
-    print(subtotal)
-
     existing_bs = purchases["B"]
     free_bs = number_of_E // 2
     if free_bs != 0:
@@ -76,19 +71,16 @@ def calculate_E(number_of_E, purchases):
         # subtotal += prices["2B"] - (2 * prices["B"])
         # I misunderstood the input - I assumed the new free Bs were not included in the input which added lots of confusion
         discounts_applied = 0
-        print(f"{existing_bs=}")
-        print(f"{free_bs=}")
         while existing_bs > 0 and free_bs > 0:
             discounts_applied += 1
-            if discounts_applied % 2 != 0:
-                subtotal -= prices["B"]
-            elif discounts_applied %2 == 0:
+            if discounts_applied %2 == 0 or (existing_bs - free_bs) % 2 != 0:
                 subtotal -= prices["2B"] - prices["B"]
+            elif discounts_applied % 2 != 0:
+                subtotal -= prices["B"]
             existing_bs -= 1
             free_bs -= 1
-        print("E")
-        print(subtotal)
     return subtotal
+
 
 
 
