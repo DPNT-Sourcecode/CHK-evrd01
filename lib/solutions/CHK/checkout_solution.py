@@ -14,23 +14,17 @@ prices = {
 }
 
 def checkout(skus: str) -> int:
-
-    purchases = {
-        "A": 0,
-        "B": 0,
-        "C": 0,
-        "D": 0,
-        "E": 0,
-        "F": 0
-    }
-
+    purchases = {}
     total = 0
 
     for char in skus:
         if char not in prices:
             return -1
             # raise Exception("Invalid SKU")
-        purchases[char] += 1
+        if char in purchases:
+            purchases[char] += 1
+        else:
+            purchases[char] = 1
 
     for key, number_bought in purchases.items():
         if key == "A":
@@ -92,4 +86,3 @@ def calculate_F(number_of_F: int) -> int:
     remaining = number_of_F % 3
     subtotal += remaining * prices["F"]
     return subtotal
-
