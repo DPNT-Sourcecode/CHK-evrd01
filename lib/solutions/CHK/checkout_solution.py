@@ -21,7 +21,7 @@ def checkout(skus: str) -> int:
         "C": 0,
         "D": 0,
         "E": 0,
-        "F": 10
+        "F": 0
     }
 
     total = 0
@@ -39,13 +39,13 @@ def checkout(skus: str) -> int:
             total += calculate_B(number_bought)
         elif key == "E":
             total += calculate_E(number_bought, purchases)
-        # elif key == "F":
-            # total += calculate_F(number_bought)
+        elif key == "F":
+            total += calculate_F(number_bought)
         else:
             total += purchases[key] * prices[key]
     return total
 
-def calculate_A(number_of_A: int) -> int:
+def calculate_A(number_of_A):
     subtotal = 0
     fives = number_of_A // 5
     threes = (number_of_A % 5) // 3
@@ -55,7 +55,7 @@ def calculate_A(number_of_A: int) -> int:
     subtotal += prices["A"] * ones
     return subtotal
 
-def calculate_B(number_of_B: int) -> int:
+def calculate_B(number_of_B):
     subtotal = 0
     twos = number_of_B // 2
     ones = number_of_B % 2
@@ -63,7 +63,7 @@ def calculate_B(number_of_B: int) -> int:
     subtotal += prices["B"] * ones
     return subtotal
 
-def calculate_E(number_of_E: int, purchases: dict) -> int:
+def calculate_E(number_of_E, purchases):
     subtotal = 0
     subtotal += number_of_E * prices["E"]
     
@@ -92,3 +92,4 @@ def calculate_F(number_of_F: int) -> int:
     remaining = number_of_F % 3
     subtotal += remaining * prices["F"]
     return subtotal
+
