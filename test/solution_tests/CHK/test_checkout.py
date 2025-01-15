@@ -75,3 +75,8 @@ class TestCheckout:
         items = "EEEB"
         price = checkout_solution.checkout(items)
         assert price == 120
+
+    def test_checkout_BEBEEE(self):
+        items = "BEBEEE"
+        price = checkout_solution.checkout(items)
+        assert price == 160
