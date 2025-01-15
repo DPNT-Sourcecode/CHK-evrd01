@@ -6,14 +6,16 @@ def checkout(skus: str) -> int:
         "A": 50,
         "B": 30,
         "C": 20,
-        "D": 15
+        "D": 15,
+        "E": 40
     }
 
     purchases = {
         "A": 0,
         "B": 0,
         "C": 0,
-        "D": 0
+        "D": 0,
+        "E": 0
     }
 
     total = 0
@@ -39,4 +41,5 @@ def checkout(skus: str) -> int:
         total += prices[char]
     
     return total
+
 
