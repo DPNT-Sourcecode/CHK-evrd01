@@ -95,3 +95,9 @@ class TestCheckout:
         items = "FFFFFF"
         price = checkout_solution.checkout(items)
         assert price == 40
+    
+    def test_checkout_16H(self):
+        items = "H" * 16
+        price = checkout_solution.checkout(items)
+        assert price == 135
+
